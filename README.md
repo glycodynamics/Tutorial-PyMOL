@@ -49,7 +49,7 @@ M-click	: Center Camera
 R-click	: Open menu
 ```
 
-## 2.1 Aligning Structures
+## 2.4 Aligning Structures
 PyMOl can align one structure on anther and all the structures in name list panel on another.\
 Action  →  Align  → to molecule\
 Command line allows you some better options. try:
@@ -58,19 +58,125 @@ fetch 1qoh, type=pdb1
 fetch 2chb
 align 1qoh, 2chb
 ```
-now try following two alignemnt options one my one"
+now try following two alignemnt options one by one and analyze the difference between these three approaches:
 ```
 cealign 1qoh, 2chb
 super 1qoh, 2chb
 ```
+![Alignment in PyMOL](https://github.com/glycodynamics/pymol/blob/main/images/Image_align.png)
 
-## 2.1 PyMOL Graphical Interface
-Text
-## 2.1 PyMOL Graphical Interface
-Text
-## 2.1 PyMOL Graphical Interface
-Text
-## 2.1 PyMOL Graphical Interface
-Text
+## 2.5 Selection
+• Selectin can be made my changing "Selecting" option and then clicking on particuler unit.\
+• You can display protein sequences and select particuler residues from the chain\
+• PyMOL also has a selection language that can be used with ```sel``` to select atoms based on identifiers and properties. Many commands (like color, show, etc.) take an atom selection argument to only operate on a subset of all atoms in the scene. 
+Example:
+```
+show spheres, solvent and chain A
 
+```
+### Selection Operator/Modifier Table
+| Operator|Alias|Full Descriptio|
+| --------| ------------- | ------------|
+|**Generic**| | |
+| all|*| All atoms currently loaded into PyMOL|
+| none| | Empty selection|
+| model 1ubq|m.	1qoh| Alll the atoms from object "1qoh"|
+| chain C|c.	C| Chain identifier "C"| 
+| resn ALA|r.	ALA| Residue name "ALA"|
+|resi 100-200	|i.	|Residue identifier between 100 and 200|
+|**Chemical classes**| | |
+|organic|	org.	|Non-polymer organic compounds (e.g. ligands, buffers)|
+|inorganic|	ino.	|Non-polymer inorganic atoms/ions|
+|solvent|	sol.	|Water molecules|
+|polymer|	pol.	|Protein or Nucleic Acid|
+|polymer.protein|		|Protein (New in PyMOL 2.1)|
+|polymer.nucleic|		|Nucleic Acid (New in PyMOL 2.1|
+|hetatm	|	|Atoms loaded from PDB HETATM records|
+|hydrogens|	h.	|Hydrogen atoms|
+|backbone|	bb.	|Polymer backbone atoms (new in PyMOL 1.6.1)|
+|sidechain|	sc.	|Polymer non-backbone atoms (new in PyMOL 1.6.1)|
+|metals|	|	Metal atoms (new in PyMOL 1.6.1)|
+|donors|	don.|	Hydrogen bond donor atoms|
+|acceptors|	acc.|	Hydrogen bond acceptor atoms|
+|label "Hello World"|		|Atoms with label "Hello World" (new in PyMOL 1.9)|
+
+## 2.6 Colors
+Download 1qoh using following commands and then try different coloring options as described below:
+```
+fetch 1qoh, type=pdb1
+bg_color white
+
+```
+#### By using color option:
+• By element: Six sets with each having 8-9 color schemes.\
+• By Chain: Each chain will be colored by a different "element" scheme.\
+• By ss: "helix (red/cyan)" "loop (yellow/purple/red" and "sheet (green/pink/purple)".\
+• Spectrom: Rainbow color scheme.\
+#### By using commands:
+• ```util.chax``` : Wrapper around "color atomic" (x=g(green), b(blue), m, k, o, p s, w, y so on).\
+• ```util.cbc``` : Color all chains a different color.\
+• ```util.chainbow``` : Wrapper around "Rainbow color scheme".\
+• ```util.ss```       : Legacy secondary structure assignment routine. **Don't use**.
+
+## 2.7 Rendering
+High-resolution photos fit for publication can be prepared by rendeing images using ```ray``` in PyMOL. Please note, the ray command can take some time (up to several minutes, depending on image complexity, size and computer power). Lets prepare a system for rensering using follwoing commands:
+
+```
+rein 
+fetch 1nqu, type=pdb1 
+split_states 1nqu
+bg_color white
+orient
+util.cbc
+remove ! polymer
+```
+Then render using Draw/ray Options or command ```ray```. When you have got somehting large and have various light points, rendering can be time taking. Rendering speed can be controlled using by setting ```hash_max```. Check current hash_max using:
+```
+get hash_max
+```
+You can set heigher hash_max rate and get better performance. Heigher hash_max uses more memory for image processing? (make sure you don’t crash it!)
+
+```hash_max set to 100``` : 11 gb, Ray: render time: 9.69 sec. = 371.4 frames/hour (61.48 sec. accum.).\
+```hash_max set to 200``` : 12 bg, Ray: render time: 4.36 sec. = 825.3 frames/hour (65.84 sec. accum.).\
+```hash_max set to 400``` : 13 bg, Ray: render time: 6.28 sec. = 573.4 frames/hour (72.12 sec. accum.).\
+```hash_max set to 800``` : 18 bg, Ray: render time: 9.95 sec. = 361.8 frames/hour (104.13 sec. accum.)
+ 
+## 2.7 Image Options
+```
+rein
+fetch 1nqu, async=0
+bg_color white
+util.cbc
+remove ! polymer
+set hash_max, 200
+select none
+```
+Check defaults:
+```
+get spec_reflect
+get ray_shadows
+get ray_trace_color
+get ray_trace_fog
+get depth_cue
+get ray
+```
+You can change those options using ```set``` command:
+```
+set spec_reflect, off
+set ray_shadows, off
+set ray_trace_color, black
+set ray_trace_fog, 0
+set ray_opaque_background, on
+```
+
+
+## 2.8 Representation
+### 2.8.1 Sticks
+### 2.8.1 Cartoon
+### 2.8.1 Surface
+Text
+## 2.9 PyMOL Graphical Interface
+Text
+## 3 PyMOL Graphical Interface
+Text
 
