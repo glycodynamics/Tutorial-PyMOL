@@ -153,7 +153,6 @@ select none
 ```
 Check defaults:
 ```
-get spec_reflect
 get ray_shadows
 get ray_trace_color
 get ray_trace_fog
@@ -170,13 +169,50 @@ set ray_opaque_background, on
 ```
 
 
+### 2.7.1 Ray Trace Modes
+```
+rein
+fetch 1nqu, async=0
+bg_color white
+util.cbc
+remove ! polymer
+set ray_trace_mode, 1
+```
+![Ray Trace Modes](https://github.com/glycodynamics/pymol/blob/main/images/image_ray_trace.png)
+
+### 2.7.2 Ray Gain
+```
+set ray_trace_gain, 1
+set ray_trace_gain, 2
+
+
+```
+![Ray Gain](https://github.com/glycodynamics/pymol/blob/main/images/image_ray_gain.png)
 ## 2.8 Representation
 ### 2.8.1 Sticks
-### 2.8.1 Cartoon
-### 2.8.1 Surface
+```
+set valence,0 
+set stick_radius, 1
+```
+
+![Sticks representation](https://github.com/glycodynamics/pymol/blob/main/images/image_stick_radius.png)
+### 2.8.2 Cartoon
+```
+as cartoon
+cartoon rect
+cartoon oval
+cartoon tube
+cartoon loop
+cartoon automatic
+```
+![Cartoon representation](https://github.com/glycodynamics/pymol/blob/main/images/image_cartoon.png)
+### 2.8.3 Other Cartoon Representation Options
+![Cartoon Color](https://github.com/glycodynamics/pymol/blob/main/images/image_color_options.png)
+### 2.8.4 Surface
+
+
+
 Text
 ## 2.9 PyMOL Graphical Interface
-Text
-## 3 PyMOL Graphical Interface
-Text
+
 
