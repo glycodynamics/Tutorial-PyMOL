@@ -1,7 +1,7 @@
 # PyMOL tutorial
-This tutorial was written for PyMOL workshop by CCBRC, March 8-9, 2022. This is an intermediate tutorial to powerful molecular visualizer PyMOL. We will only selected things to prepare high resolution publication quality umages.
+This tutorial was written for the PyMOL workshop by CCBRC, March 8-9, 2022. PyMOL is an intermediate tutorial to a powerful molecular visualizer PyMOL. We will go through only selected things to prepare high-resolution publication-quality images.
 
-Download and install one of the floowing PyMOL, if you do not have one :
+Download and install one of the following PyMOL if you do not have one :
 
 [Open source version](https://pymolwiki.org/index.php/Windows_Install) : Freely available
 
@@ -12,13 +12,13 @@ Download and install one of the floowing PyMOL, if you do not have one :
 
   
 ## 2.2.Loading structure to PyMOL:
-1. Open locally structure: Open PyMOL → File → Open → Brows PDB/CIF/Mol2 file → Open
-2. Get structure from Protein Data Bank: File → Get PDB → Fillup 'PDB ID' of the structure (3CHB) → Download: will open multiple units
+1. Open structure locally: Open PyMOL → File → Open → Browse PDB/CIF/Mol2 file → Open
+2. Get structure from Protein Data Bank: File → Get PDB → Fill up 'PDB ID' of the structure (3CHB) → Download: will open multiple units
 3. Using commands: keyword ```fetch 1qoh``` will open multiple units
 5. Using commands: keyword ```fetch 1qoh, type=pdb1``` will open biological assembly  
 
 ## 2.3 Modes
-There are two modes in PyMOL: (1) Viewing and (2) Editing. You can switch between these modes my clicing next to "Mouse Mode" on the bottom right corner panel.\
+There are two modes in PyMOL: (1) Viewing and (2) Editing. You can switch between these modes by clicking next to "Mouse Mode" on the bottom right corner panel.\
 Viewing Mode: Primarily used to view, rotate, translate, and change the representations of objects.\
 Editing Mode: Used to rotate bonds, replace atoms, physically move atoms and residues, etc.\
 
@@ -26,14 +26,14 @@ Editing Mode: Used to rotate bonds, replace atoms, physically move atoms and res
 
 • Bottom line has 'drag window option', 'States control', 'sequence view', 'rock camera' and 'full screen' options.\
 • Download PDB 7LOI ```fetch 7LOI`` and play all 15 models.\
-• Change "Mouse Mode : Editing" and "Selecting " Atoms" and then try selecting 2, 3 and 4 atoms.\
+• Change "Mouse Mode: Editing" and "Selecting " Atoms" and then try selecting 2, 3, and 4 atoms.\
 
 ## 2.3 Mouse control
-Things are easier with three button mouse rather than magic mouse or using laptop's touchpad.
+Things are much easier with a three-button mouse rather than a magic mouse or using a laptop's touchpad.
 
 Viewing mode
 ```
-L-click	: Make selection
+L-click	: Make a selection
 M-click	: Center Camer
 M-wheel	: z-plane-clipping
 R-click	: Open menu
@@ -50,15 +50,15 @@ R-click	: Open menu
 ```
 
 ## 2.4 Aligning Structures
-PyMOl can align one structure on anther and all the structures in name list panel on another.\
+PyMOL can align one structure on another and all the structures in the name list panel on another.\
 Action  →  Align  → to molecule\
-Command line allows you some better options. try:
+Command-line allows some more useful options to perform the alignment. Try:
 ```
 fetch 1qoh, type=pdb1
 fetch 2chb
 align 1qoh, 2chb
 ```
-now try following two alignemnt options one by one and analyze the difference between these three approaches:
+now try following two alignment options one by one and analyze the difference between these three approaches:
 ```
 cealign 1qoh, 2chb
 super 1qoh, 2chb
@@ -66,12 +66,12 @@ super 1qoh, 2chb
 ![Alignment in PyMOL](https://github.com/glycodynamics/pymol/blob/main/images/Image_align.png)
 
 ## 2.5 Selection
-• Selectin can be made my changing "Selecting" option and then clicking on particuler unit.\
-• You can display protein sequences and select particuler residues from the chain\
+• Selectin can be made by changing "Selecting" option and then clicking on the particular unit.\
+• You can display protein sequences and select particular residues from the chain\
 • PyMOL also has a selection language that can be used with ```sel``` to select atoms based on identifiers and properties. Many commands (like color, show, etc.) take an atom selection argument to only operate on a subset of all atoms in the scene. 
 Example:
 ```
-show spheres, solvent and chain A
+show spheres, solvent, and chain A
 
 ```
 ### Selection Operator/Modifier Table
@@ -101,7 +101,7 @@ show spheres, solvent and chain A
 |label "Hello World"|		|Atoms with label "Hello World" (new in PyMOL 1.9)|
 
 ## 2.6 Colors
-Download 1qoh using following commands and then try different coloring options as described below:
+Download 1qoh using the following commands and then try different coloring options as described below:
 ```
 fetch 1qoh, type=pdb1
 bg_color white
@@ -119,7 +119,7 @@ bg_color white
 • ```util.ss```       : Legacy secondary structure assignment routine. **Don't use**.
 
 ## 2.7 Rendering
-High-resolution photos fit for publication can be prepared by rendeing images using ```ray``` in PyMOL. Please note, the ray command can take some time (up to several minutes, depending on image complexity, size and computer power). Lets prepare a system for rensering using follwoing commands:
+High-resolution photos fit for publication can be prepared by rendering images using ```ray``` in PyMOL. Please note that the ray command can take some time (up to several minutes, depending on image complexity, size, and computer power). Let us prepare a system for rendering using the following commands:
 
 ```
 rein 
@@ -134,7 +134,7 @@ Then render using Draw/ray Options or command ```ray```. When you have got someh
 ```
 get hash_max
 ```
-You can set heigher hash_max rate and get better performance. Heigher hash_max uses more memory for image processing? (make sure you don’t crash it!)
+You can set a heigher hash_max rate and get better performance. Heigher hash_max uses more memory for image processing (make sure you don’t crash it!).
 
 ```hash_max set to 100``` : 11 gb, Ray: render time: 9.69 sec. = 371.4 frames/hour (61.48 sec. accum.).\
 ```hash_max set to 200``` : 12 bg, Ray: render time: 4.36 sec. = 825.3 frames/hour (65.84 sec. accum.).\
@@ -159,7 +159,7 @@ get ray_trace_fog
 get depth_cue
 get ray
 ```
-You can change those options using ```set``` command:
+Those options can be changed using ```set``` command:
 ```
 set spec_reflect, off
 set ray_shadows, off
@@ -185,7 +185,7 @@ ray 2400, 2400		      # line thickness is dependent on resolution
 ![Ray Trace Modes](https://github.com/glycodynamics/pymol/blob/main/images/image_ray_trace.png)
 
 ### 2.7.2 Ray Gain
-You can tweek line thickness by setting up following option:
+Line thickness can be tweaked by setting up the following option:
 
 ```
 set ray_trace_gain, 1
@@ -226,7 +226,7 @@ set cartoon_smooth_loops = 1
 
 
 ## 2.8.3 Secordry structure determination:
-Please note that pymols internal validation of secondary structure may not always be correct. If you have any such situation, you can set the secondry structure youfelf:
+Please note that pymol's internal validation of secondary structure may not always be correct. If you notice any such mistake, you can always set the secondary structure yourself in PyMOL:
 
 ```
 rein
@@ -241,7 +241,7 @@ as cartoon
 ```
 ![Sec Str](https://github.com/glycodynamics/pymol/blob/main/images/image_set_secondry_str.png)
 
-You can set color of different secondry structure types and make it more appealing: 
+Color of different secondary structure types  can be set to make figure more appealing: 
 ```
 as cartoon
 color red, ss h
@@ -253,7 +253,7 @@ set cartoon_flat_sheets = 0
 ![Cartoon Color](https://github.com/glycodynamics/pymol/blob/main/images/image_color_options.png)
 
 ### 2.8.5 Surface
-Surface of the protein can be shouws from gui (S->surface) as well as with a few commands:
+The surface of the protein can be shows from GUI (S->surface) as well as with a few commands:
 ```
 reinitialize
 fetch 1nqu, async=0
@@ -279,7 +279,7 @@ ray
 
 ```
 get spec_refl
-set spec_refl=11.5
+set spec_refl=1.5
 ray
 set spec_refl=5
 ray
@@ -330,7 +330,7 @@ set opaque_background
 ray
 ```
 ```
-# Change sorface color to gray
+# Change surface color to gray
 set surface_color, white
 ray
 ```
@@ -344,13 +344,13 @@ util.cbc
 unset opaque_background # dont miss this!
 ray
 ```
-You can superimpose surface and cartoon representation in powerpoint or any image editor of your choice. 
+One can superimpose surface and cartoon representation in PowerPoint or any image editor of your choice. 
 ![Surf Slices](https://github.com/glycodynamics/pymol/blob/main/images/image_surf_slices.png)
 
 
 ## Exploiting PyMOL to get images like other packages
 ### QuteMol: 
-QuteMol visualization techniques are aimed at improving clarity and an easier understanding of the 3D shape and structure of large molecules or complex proteins. Ball and Sticks, Space-Fill and Liquorice visualization modes are most common.
+QuteMol visualization techniques are aimed at improving clarity and an easier understanding of the 3D shape and structure of large molecules or complex proteins. Ball and Sticks, Space-Fill, and Liquorice visualization modes are most common.
 
 See more at: http://qutemol.sourceforge.net/
 
@@ -379,12 +379,12 @@ set reflect,1.5
 set ray_shadow_decay_factor, 0.1
 set ray_shadow_decay_range, 2
 ```
-Note that ray_shadow whould not be switched off on this task!
+Note that ray_shadow sould not be switched off on this task!
 ![QuteMol](https://github.com/glycodynamics/pymol/blob/main/images/image_quietmol.png)
 
 
 ###  David Goodsell like images:
-Prof David S. Goodsell is especially known for his watercolor paintings of cell interiors. We can use pymol to create images something similar to his water paining image of Cascade surveillance complex of the Type I CRISPR bacterial immune system from Escherichia coli (2015) shown below. 
+Prof David S. Goodsell is primarily known for his watercolor paintings of cell interiors. For example, Cascade surveillance complex of the Type I CRISPR bacterial immune system from Escherichia coli (2015) is shown below. We can use PyMOL to create something similar to his water painting images. 
 
 ```
 reinitialize
@@ -401,7 +401,7 @@ color magenta, org
 remove solvent
 ```
 
-Now set the lights, ray tracing setttings to get the Goodsell-like rendering
+Now set the lights ray tracing settings to get the Goodsell-like rendering.
 
 ```
 unset specular
@@ -416,8 +416,7 @@ ray
 
 
 ## Acknowledgement:
-PyMOL Roos tutorials
-pymol.org
-NIH, UM and GlyCORE
-
+PyMOL wiki: https://pymolwiki.org/index.php/Main_Page 
+Dr. Ross PyMOl tutorials
+This workshop is supported by an Institutional Development Award (IDeA) from the National Institute of General Medical Sciences of the US National Institutes of Health under award number P20GM130460.
 
