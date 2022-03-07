@@ -1,5 +1,5 @@
 # PyMOL tutorial
-This tutorial was written for the PyMOL workshop by CCBRC, March 8-9, 2022. PyMOL is an intermediate tutorial to a powerful molecular visualizer PyMOL. We will go through only selected things to prepare high-resolution publication-quality images.
+This tutorial was written for the PyMOL workshop by CCBRC, March 8-9, 2022. This is an intermediate tutorial to a powerful molecular visualizer PyMOL. We will go through only selected things to prepare high-resolution publication-quality images.
 
 Download and install one of the following PyMOL if you do not have one :
 
