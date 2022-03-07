@@ -176,16 +176,21 @@ fetch 1nqu, async=0
 bg_color white
 util.cbc
 remove ! polymer
-set ray_trace_mode, 1
+set ray_trace_mode, 1   # line thickness independent of magnification
+```
+```
+ray 			              # this is nice when zoomed in, but thick lines at low mag
+ray 2400, 2400		      # line thickness is dependent on resolution
 ```
 ![Ray Trace Modes](https://github.com/glycodynamics/pymol/blob/main/images/image_ray_trace.png)
 
 ### 2.7.2 Ray Gain
+You can tweek line thickness by setting up following option:
+
 ```
 set ray_trace_gain, 1
 set ray_trace_gain, 2
-
-
+set ray_trace_gain, 0.12
 ```
 ![Ray Gain](https://github.com/glycodynamics/pymol/blob/main/images/image_ray_gain.png)
 ## 2.8 Representation
@@ -204,15 +209,223 @@ cartoon oval
 cartoon tube
 cartoon loop
 cartoon automatic
+cartoon putty.   # style the cartoon form
 ```
 ![Cartoon representation](https://github.com/glycodynamics/pymol/blob/main/images/image_cartoon.png)
-### 2.8.3 Other Cartoon Representation Options
+
+### 2.8.3 Cartoon Representation Options
+
+```
+as cartoon
+set cartoon_fancy_helices=1
+set cartoon_flat_sheets = 0
+set cartoon_smooth_loops = 1
+```
+
+![Cartoon Fancy](https://github.com/glycodynamics/pymol/blob/main/images/image_cartoon_types.png)
+
+
+## 2.8.3 Secordry structure determination:
+Please note that pymols internal validation of secondary structure may not always be correct. If you have any such situation, you can set the secondry structure youfelf:
+
+```
+rein
+fetch 1nqu, async=0
+bg_color white
+orient
+util.cbc
+remove ! polymer
+select c. C & i. 85-109       #just to see where is this selection
+alter c. C & i. 85-109, ss='L'
+as cartoon
+```
+![Sec Str](https://github.com/glycodynamics/pymol/blob/main/images/image_set_secondry_str.png)
+
+You can set color of different secondry structure types and make it more appealing: 
+```
+as cartoon
+color red, ss h
+color blue, ss s
+color yellow, ss l+
+set cartoon_smooth_loops = 1
+set cartoon_flat_sheets = 0
+```
 ![Cartoon Color](https://github.com/glycodynamics/pymol/blob/main/images/image_color_options.png)
-### 2.8.4 Surface
+
+### 2.8.5 Surface
+Surface of the protein can be shouws from gui (S->surface) as well as with a few commands:
+```
+reinitialize
+fetch 1nqu, async=0
+remove solvent
+orient 
+bg_color white
+color red, ss h
+color marine, ss s
+color yellow, ss l+''
+as surface
+```
+
+#### Surface Quality
+
+```
+get surface_quality
+set surface_quality, 2
+ray
+```
+![Surf Quality](https://github.com/glycodynamics/pymol/blob/main/images/image_surf_quality.png)
+
+#### Surface Reflection
+
+```
+get spec_refl
+set spec_refl=11.5
+ray
+set spec_refl=5
+ray
+```
+![Surf Reflection](https://github.com/glycodynamics/pymol/blob/main/images/Image_surf_spec_refl.png)
+
+#### Solven Radius
+```
+get solvent_radius
+set solvent_radius, 2.0
+set surface_solvent = on
+```
+![Surf Refpection](https://github.com/glycodynamics/pymol/blob/main/images/image_solvent_radius.png)
+
+## 2.9 Slices:
+
+```
+reinitialize
+fetch 1nqu, async=0
+remove solvent
+orient 
+bg_color white
+color red, ss h
+color marine, ss s
+color yellow, ss l+''
+as surface
+```
+Disable these options before proceeding
+
+```
+set depth_cue, 0
+set ray_shadows, 0
+set ray_trace_mode, 0
+```
+```
+fraction = 0.42
+view = cmd.get_view()
+near_dist = fraction*(view[16]-view[15])
+far_dist = (view[16]-view[15]) - near_dist
+cmd.clip("near", -near_dist)
+ray
+```
+
+```
+# Change interior color to gray
+set ray_interior_color, grey90
+set opaque_background
+ray
+```
+```
+# Change sorface color to gray
+set surface_color, white
+ray
+```
+
+```
+# render foreground image 
+cmd.clip("near", near_dist)
+cmd.clip("far", far_dist)
+as cartoon
+util.cbc
+unset opaque_background # dont miss this!
+ray
+```
+You can superimpose surface and cartoon representation in powerpoint or any image editor of your choice. 
+![Surf Slices](https://github.com/glycodynamics/pymol/blob/main/images/image_surf_slices.png)
 
 
+## Exploiting PyMOL to get images like other packages
+### QuteMol: 
+QuteMol visualization techniques are aimed at improving clarity and an easier understanding of the 3D shape and structure of large molecules or complex proteins. Ball and Sticks, Space-Fill and Liquorice visualization modes are most common.
 
-Text
-## 2.9 PyMOL Graphical Interface
+See more at: http://qutemol.sourceforge.net/
+
+```
+reinitialize
+fetch 1nqu, async=0
+bg_color white
+remove solvent
+orient
+```
+```
+set_color oxygen, [1.0,0.4,0.4]
+set_color nitrogen, [0.5,0.5,1.0]
+as spheres
+util.cbaw
+bg white
+```
+```
+set light_count,8
+set spec_count,1
+set shininess, 10
+set specular, 0.25
+set ambient,0
+set direct,0
+set reflect,1.5
+set ray_shadow_decay_factor, 0.1
+set ray_shadow_decay_range, 2
+```
+Note: do not swich off ray_shadow on this task!
+![QuteMol](https://github.com/glycodynamics/pymol/blob/main/images/image_quietmol.png)
+
+
+###  David Goodsell like images:
+He is especially known for his watercolor paintings of cell interiors.
+
+
+reinitialize
+fetch 1nqu, tmp, async=0
+bg_color white
+set hash_max, 400
+
+as sticks
+set valence, 0
+set stick_radius = 1.7
+
+color lightblue, not org
+color magenta, org
+remove solvent
+
+# set the view
+
+set_view (\
+     0.855354905,    0.057524908,    0.514838457,\
+    -0.050117217,    0.998342931,   -0.028284293,\
+    -0.515611708,   -0.001608965,    0.856820703,\
+     0.000006188,   -0.000014648, -238.717636108,\
+   153.867889404,    1.374834061,  136.634002686,\
+   208.820083618,  268.618896484,  -20.000000000 )
+
+# set the lights, ray tracing setttings
+# to get the Goodsell-like rendering
+
+unset specular
+set ray_trace_gain, 0
+set ray_trace_mode, 3
+bg_color white
+set ray_trace_color, black
+unset depth_cue
+ray
+![David GoodSell](https://github.com/glycodynamics/pymol/blob/main/images/image_david_goodsell.png)
+
+
+## Acknowledgement:
+PyMOL Roos tutorials
+pymol.org
+NIH, UM and GlyCORE
 
 
