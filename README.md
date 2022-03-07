@@ -379,14 +379,14 @@ set reflect,1.5
 set ray_shadow_decay_factor, 0.1
 set ray_shadow_decay_range, 2
 ```
-Note: do not swich off ray_shadow on this task!
+Note that ray_shadow whould not be switched off on this task!
 ![QuteMol](https://github.com/glycodynamics/pymol/blob/main/images/image_quietmol.png)
 
 
 ###  David Goodsell like images:
-He is especially known for his watercolor paintings of cell interiors.
+Prof David S. Goodsell is especially known for his watercolor paintings of cell interiors. We can use pymol to create images something similar to his water paining image of Cascade surveillance complex of the Type I CRISPR bacterial immune system from Escherichia coli (2015) shown below. 
 
-
+```
 reinitialize
 fetch 1nqu, tmp, async=0
 bg_color white
@@ -399,20 +399,11 @@ set stick_radius = 1.7
 color lightblue, not org
 color magenta, org
 remove solvent
+```
 
-# set the view
+Now set the lights, ray tracing setttings to get the Goodsell-like rendering
 
-set_view (\
-     0.855354905,    0.057524908,    0.514838457,\
-    -0.050117217,    0.998342931,   -0.028284293,\
-    -0.515611708,   -0.001608965,    0.856820703,\
-     0.000006188,   -0.000014648, -238.717636108,\
-   153.867889404,    1.374834061,  136.634002686,\
-   208.820083618,  268.618896484,  -20.000000000 )
-
-# set the lights, ray tracing setttings
-# to get the Goodsell-like rendering
-
+```
 unset specular
 set ray_trace_gain, 0
 set ray_trace_mode, 3
@@ -420,6 +411,7 @@ bg_color white
 set ray_trace_color, black
 unset depth_cue
 ray
+```
 ![David GoodSell](https://github.com/glycodynamics/pymol/blob/main/images/image_david_goodsell.png)
 
 
