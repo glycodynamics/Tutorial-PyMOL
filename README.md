@@ -6,7 +6,8 @@ Download and install one of the following PyMOL if you do not have one :
 [Open source version](https://pymolwiki.org/index.php/Windows_Install) : Freely available
 
 [Incentive version](https://pymol.org/2/#download)  : License required (Individual/Student/Teacher/Site wide]
-  
+
+PyMOL is free for teachers/and students, and educational use only license can be obtained by registering [here](https://pymol.org/edu) 
 ## 2.1 PyMOL Graphical Interface
 ![fig-1-hSig7-complex](https://github.com/glycodynamics/pymol/blob/main/images/Screen%20Shot%202022-03-03%20at%207.40.34%20PM.png)
 
@@ -141,7 +142,7 @@ You can set a heigher hash_max rate and get better performance. Heigher hash_max
 ```hash_max set to 400``` : 13 bg, Ray: render time: 6.28 sec. = 573.4 frames/hour (72.12 sec. accum.).\
 ```hash_max set to 800``` : 18 bg, Ray: render time: 9.95 sec. = 361.8 frames/hour (104.13 sec. accum.)
  
-## 2.7 Image Options
+## 2.8 Image Options
 ```
 rein
 fetch 1nqu, async=0
@@ -169,7 +170,7 @@ set ray_opaque_background, on
 ```
 
 
-### 2.7.1 Ray Trace Modes
+### 2.8.1 Ray Trace Modes
 ```
 rein
 fetch 1nqu, async=0
@@ -184,7 +185,7 @@ ray 2400, 2400		      # line thickness is dependent on resolution
 ```
 ![Ray Trace Modes](https://github.com/glycodynamics/pymol/blob/main/images/image_ray_trace.png)
 
-### 2.7.2 Ray Gain
+### 2.8.2 Ray Gain
 Line thickness can be tweaked by setting up the following option:
 
 ```
@@ -193,15 +194,15 @@ set ray_trace_gain, 2
 set ray_trace_gain, 0.12
 ```
 ![Ray Gain](https://github.com/glycodynamics/pymol/blob/main/images/image_ray_gain.png)
-## 2.8 Representation
-### 2.8.1 Sticks
+## 2.9 Representation
+### 2.9.1 Sticks
 ```
 set valence,0 
 set stick_radius, 1
 ```
 
 ![Sticks representation](https://github.com/glycodynamics/pymol/blob/main/images/image_stick_radius.png)
-### 2.8.2 Cartoon
+### 2.9.2 Cartoon
 ```
 as cartoon
 cartoon rect
@@ -213,7 +214,7 @@ cartoon putty.   # style the cartoon form
 ```
 ![Cartoon representation](https://github.com/glycodynamics/pymol/blob/main/images/image_cartoon.png)
 
-### 2.8.3 Cartoon Representation Options
+### 2.9.3 Cartoon Representation Options
 
 ```
 as cartoon
@@ -225,7 +226,7 @@ set cartoon_smooth_loops = 1
 ![Cartoon Fancy](https://github.com/glycodynamics/pymol/blob/main/images/image_cartoon_types.png)
 
 
-## 2.8.3 Secordry structure determination:
+### 2.9.4 Secordry structure determination:
 Please note that pymol's internal validation of secondary structure may not always be correct. If you notice any such mistake, you can always set the secondary structure yourself in PyMOL:
 
 ```
@@ -252,7 +253,7 @@ set cartoon_flat_sheets = 0
 ```
 ![Cartoon Color](https://github.com/glycodynamics/pymol/blob/main/images/image_color_options.png)
 
-### 2.8.5 Surface
+### 2.9.5 Surface
 The surface of the protein can be shows from GUI (S->surface) as well as with a few commands:
 ```
 reinitialize
@@ -266,8 +267,8 @@ color yellow, ss l+''
 as surface
 ```
 
-#### Surface Quality
-
+**Surface Quality
+**
 ```
 get surface_quality
 set surface_quality, 2
@@ -275,8 +276,8 @@ ray
 ```
 ![Surf Quality](https://github.com/glycodynamics/pymol/blob/main/images/image_surf_quality.png)
 
-#### Surface Reflection
-
+**Surface Reflection
+**
 ```
 get spec_refl
 set spec_refl=1.5
@@ -286,7 +287,9 @@ ray
 ```
 ![Surf Reflection](https://github.com/glycodynamics/pymol/blob/main/images/Image_surf_spec_refl.png)
 
-#### Solven Radius
+**Solven Radius
+**
+
 ```
 get solvent_radius
 set solvent_radius, 2.0
@@ -294,7 +297,7 @@ set surface_solvent = on
 ```
 ![Surf Refpection](https://github.com/glycodynamics/pymol/blob/main/images/image_solvent_radius.png)
 
-## 2.9 Slices:
+## 2.10 Slices:
 
 ```
 reinitialize
@@ -348,8 +351,8 @@ One can superimpose surface and cartoon representation in PowerPoint or any imag
 ![Surf Slices](https://github.com/glycodynamics/pymol/blob/main/images/image_surf_slices.png)
 
 
-## Exploiting PyMOL to get images like other packages
-### QuteMol: 
+## 2.11 Exploiting PyMOL to get images like other packages
+### 2.11.1 QuteMol: 
 QuteMol visualization techniques are aimed at improving clarity and an easier understanding of the 3D shape and structure of large molecules or complex proteins. Ball and Sticks, Space-Fill, and Liquorice visualization modes are most common.
 
 See more at: http://qutemol.sourceforge.net/
@@ -383,7 +386,7 @@ Note that ray_shadow sould not be switched off on this task!
 ![QuteMol](https://github.com/glycodynamics/pymol/blob/main/images/image_quietmol.png)
 
 
-###  David Goodsell like images:
+###  2.11.2 David Goodsell like images:
 Prof David S. Goodsell is primarily known for his watercolor paintings of cell interiors. For example, Cascade surveillance complex of the Type I CRISPR bacterial immune system from Escherichia coli (2015) is shown below. We can use PyMOL to create something similar to his water painting images. 
 
 ```
@@ -419,4 +422,20 @@ ray
 PyMOL wiki: https://pymolwiki.org/index.php/Main_Page 
 Dr. Ross PyMOl tutorials
 This workshop is supported by an Institutional Development Award (IDeA) from the National Institute of General Medical Sciences of the US National Institutes of Health under award number P20GM130460.
+### Author:
+```
+Dr. Sushil K. Mishra, PhD
+Research Scientist | Core-Manager
+Computational Chemistry and Bioinformatics Research Core
+Glycoscience Centre of Research Excellence (GlyCORE) 
+The University of Mississippi, P.O. Box 1848
+University, MS 38677-1848, USA
+sushil_at_olemiss.edu
+```
+[Twitter](https://twitter.com/glycodynamics)\
+[GlyCORE Twitter](https://twitter.com/UM_glycore)\
+[CCBRC Web-page](https://pharmacy.olemiss.edu/glycore/computationalchemistrybioinformaticscore)
+
+ 
+
 
