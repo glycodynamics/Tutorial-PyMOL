@@ -120,7 +120,16 @@ bg_color white
 • ```util.ss```       : Legacy secondary structure assignment routine. **Don't use**.
 
 ## 2.7 Rendering
-High-resolution photos fit for publication can be prepared by rendering images using ```ray``` in PyMOL. Please note that the ray command can take some time (up to several minutes, depending on image complexity, size, and computer power). Let us prepare a system for rendering using the following commands:
+High-resolution photos fit for publication can be prepared by rendering images using ```ray``` in PyMOL. Please note that the ray command can take some time (up to several minutes, depending on image complexity, size, and computer power). 
+**Ray Use**
+```
+ray [width,height [,renderer [,angle [,shift ]]]
+```
+width and height can be set to any non-negative integer\
+If both are set to zero than the current window size is used and is equivalent to just using ray with no arguments.\
+If one is set to zero (or missing) while the other is a positive integer, then the argument set to zero (or missing) will be scaled to preserve the current aspect ratio.\
+
+Let us prepare a system for rendering using the following commands:
 
 ```
 rein 
@@ -130,10 +139,14 @@ bg_color white
 orient
 util.cbc
 remove ! polymer
+ray ray 1024,1024.  # ray trace the current scene, but scaled to 1024x1024 pixels
+
 ```
 Then render using Draw/ray Options or command ```ray```. When you have got somehting large and have various light points, rendering can be time taking. Rendering speed can be controlled using by setting ```hash_max```. Check current hash_max using:
 ```
 get hash_max
+ray
+set hash_max, 200
 ```
 You can set a heigher hash_max rate and get better performance. Heigher hash_max uses more memory for image processing (make sure you don’t crash it!).
 
@@ -141,7 +154,30 @@ You can set a heigher hash_max rate and get better performance. Heigher hash_max
 ```hash_max set to 200``` : 12 bg, Ray: render time: 4.36 sec. = 825.3 frames/hour (65.84 sec. accum.).\
 ```hash_max set to 400``` : 13 bg, Ray: render time: 6.28 sec. = 573.4 frames/hour (72.12 sec. accum.).\
 ```hash_max set to 800``` : 18 bg, Ray: render time: 9.95 sec. = 361.8 frames/hour (104.13 sec. accum.)
- 
+
+**Save Image**
+Image can be saveed using ```save``` option after ```ray``
+```
+save pymol_image.png
+```
+
+Ray and save can be combined togther and ```png``` can be used to write images as below:
+```
+png filename[, width[, height[, dpi[, ray[, quiet]]]]]
+```
+• ```filename``` = string: file path to be written\
+• ```width``` = integer or string: width in pixels (integer or string without units), inches (in), or centimeters (cm). If unit suffix is given, `dpi` argument is required as well. If only one of `width` or `height` is given, the aspect ratio of the viewport is preserved. {default: 0 (current)}\
+• ```height``` = integer or string: height (see width) {default: 0 (current)}\
+• ```dpi``` = float: dots-per-inch {default -1.0 (unspecified)}\
+• ```ray``` = 0 or 1: should ray be run first {default: 0 (no)}
+
+try:
+```
+png ~/Desktop/pymol_image.png width=10cm, dpi=300, ray=1
+png ~/Desktop/pymol_image.png width=1200, height=1200, dpi=300, ray=1
+```
+Later will ouput a four-inch square image at 300dpi. Leaving off the dpi parameter would yield a 1200x1200 image at your system's default pixel density (e.g. 72 or 96 dpi). This saves the intermediate step of having to use GIMP/PhotoShop/etc to rescale your photos for publication.
+
 ## 2.8 Image Options
 ```
 rein
@@ -267,8 +303,8 @@ color yellow, ss l+''
 as surface
 ```
 
-**Surface Quality
-**
+**Surface Quality**
+This controls how well PyMOL draws surfaces. Lower values, like 0, are rough surface approximations. These low values are good for speed--especially for larger surfaces. For rendering of publication quality photos, and truer representations of the biological surface, set the value higher--to something like 2, 3 or 4. In practice typical values are 1, 2 and 3.
 ```
 get surface_quality
 set surface_quality, 2
@@ -276,8 +312,9 @@ ray
 ```
 ![Surf Quality](https://github.com/glycodynamics/pymol/blob/main/images/image_surf_quality.png)
 
-**Surface Reflection
-**
+**Specular Reflection**
+This setting changes how PyMol handles specular reflections. Essentially, this setting, when combined with spec_power adjusts how sharp or diffuse the reflection is, giving you shiny looking surface or duller surfaces.
+
 ```
 get spec_refl
 set spec_refl=1.5
@@ -287,8 +324,7 @@ ray
 ```
 ![Surf Reflection](https://github.com/glycodynamics/pymol/blob/main/images/Image_surf_spec_refl.png)
 
-**Solven Radius
-**
+**Solvent Radius**:This defines the solvent radius. Changing the solvent radius in PyMOL affects how PyMOL interprets surfaces, surface area. The default solvent radius is 1.4 Angstroms.
 
 ```
 get solvent_radius
@@ -297,7 +333,50 @@ set surface_solvent = on
 ```
 ![Surf Refpection](https://github.com/glycodynamics/pymol/blob/main/images/image_solvent_radius.png)
 
-## 2.10 Slices:
+
+## 2.10 Show Specific Properties
+
+Let us Show hydrophobic cores of the protein 1nqu. 
+
+```
+reinitialize
+fetch 1nqu
+orient 
+bg_color white
+set hash_max, 400
+as cartoon,all
+color gray,all
+remove solvent
+```
+
+Now select hydrophobic residues and name them hydrophobes. 
+
+```
+select hydrophobes, (r. ala+gly+val+ile+leu+phe+met)
+show spheres, (hydrophobes and (!name c+n+o))
+color orange,hydrophobes
+disable hydrophobes
+show surface, polymer
+set transparency, 0.5
+show sticks, organic
+color green, organic
+ray 1200
+save hydrophobes_low.png
+```
+![Image Hydrophobes](https://github.com/glycodynamics/pymol/blob/main/images/image_hydrophobes.png)
+
+Do follwoing only of you have a powerful computer:
+
+```
+set spec_power = 200
+set spec_refl=1.5
+set surface_quality, 2
+set antialias, 2
+ray 1200
+save hydrophobes_high.png
+```
+
+## 2.11 Slices:
 
 ```
 reinitialize
@@ -329,7 +408,7 @@ ray
 ```
 # Change interior color to gray
 set ray_interior_color, grey90
-set opaque_background
+set opaque_background  # solid background
 ray
 ```
 ```
@@ -351,8 +430,8 @@ One can superimpose surface and cartoon representation in PowerPoint or any imag
 ![Surf Slices](https://github.com/glycodynamics/pymol/blob/main/images/image_surf_slices.png)
 
 
-## 2.11 Exploiting PyMOL to get images like other packages
-### 2.11.1 QuteMol: 
+## 2.12 Exploiting PyMOL to get images like other packages
+### 2.12.1 QuteMol: 
 QuteMol visualization techniques are aimed at improving clarity and an easier understanding of the 3D shape and structure of large molecules or complex proteins. Ball and Sticks, Space-Fill, and Liquorice visualization modes are most common.
 
 See more at: http://qutemol.sourceforge.net/
@@ -386,7 +465,7 @@ Note that ray_shadow sould not be switched off on this task!
 ![QuteMol](https://github.com/glycodynamics/pymol/blob/main/images/image_quietmol.png)
 
 
-###  2.11.2 David Goodsell like images:
+###  2.12.2 David Goodsell like images:
 Prof David S. Goodsell is primarily known for his watercolor paintings of cell interiors. For example, Cascade surveillance complex of the Type I CRISPR bacterial immune system from Escherichia coli (2015) is shown below. We can use PyMOL to create something similar to his water painting images. 
 
 ```
