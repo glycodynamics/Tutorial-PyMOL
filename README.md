@@ -396,6 +396,7 @@ set depth_cue, 0
 set ray_shadows, 0
 set ray_trace_mode, 0
 ```
+We can clip a molecule by moding wheel or follwoing python code. This python code will give us 100% reproducebility compared to clipping by using muuse.  
 ```
 fraction = 0.42
 view = cmd.get_view()
