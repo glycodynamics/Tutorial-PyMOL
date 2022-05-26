@@ -114,7 +114,7 @@ bg_color white
 • By ss: "helix (red/cyan)" "loop (yellow/purple/red" and "sheet (green/pink/purple)".\
 • Spectrom: Rainbow color scheme.\
 #### By using commands:
-• ```util.chax``` : Wrapper around "color atomic" (x=g(green), b(blue), m, k, o, p s, w, y so on).\
+• ```util.cbax``` : Wrapper around "color atomic" (x=g(green), b(blue), m, k, o, p s, w, y so on).\
 • ```util.cbc``` : Color all chains a different color.\
 • ```util.chainbow``` : Wrapper around "Rainbow color scheme".\
 • ```util.ss```       : Legacy secondary structure assignment routine. **Don't use**.
