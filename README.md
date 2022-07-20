@@ -507,6 +507,8 @@ ray
 ```
 ![David GoodSell](https://github.com/glycodynamics/pymol/blob/main/images/image_david_goodsell.png)
 
+## Explore different plugins
+Plugin --> Plugin Manager --> Install New Plugin 
 
 ## Acknowledgement:
 PyMOL wiki: https://pymolwiki.org/index.php/Main_Page 
