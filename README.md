@@ -101,6 +101,16 @@ show spheres, solvent, and chain A
 |acceptors|	acc.|	Hydrogen bond acceptor atoms|
 |label "Hello World"|		|Atoms with label "Hello World" (new in PyMOL 1.9)|
 
+## Centers
+Center of mass: Select a number of atoms you wiss to include in center of mass calculation.
+```
+centerofmass sele
+```
+Create Pseudoatoms:
+```
+pseudoatom com, pos=[ -35.972,  42.456,  14.847]
+show spheres, com
+```
 ## 2.6 Colors
 Download 1qoh using the following commands and then try different coloring options as described below:
 ```
