@@ -510,6 +510,11 @@ ray
 ## Explore different plugins
 Plugin --> Plugin Manager --> Install New Plugin 
 
+## APBS electrostatics calculation 
+APBS, the Adaptive Poisson-Boltzmann Solver, is a freely available macromolecular electrostatics calculation program in PyMOL. It  displays the results of the calculations as an electrostatic potential molecular surface.
+
+Plugin --> APBS Electrostastics
+
 ## Acknowledgement:
 PyMOL wiki: https://pymolwiki.org/index.php/Main_Page 
 Dr. Ross PyMOl tutorials
