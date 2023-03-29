@@ -130,8 +130,8 @@ bg_color white
 • ```util.ss```       : Legacy secondary structure assignment routine. **Don't use**.
 
 ## 2.7 Rendering
-High-resolution photos fit for publication can be prepared by rendering images using ```ray``` in PyMOL. Please note that the ray command can take some time (up to several minutes, depending on image complexity, size, and computer power). 
-**Ray Use**
+High-resolution photos fit for publication can be prepared by rendering images using ```ray``` in PyMOL. Please note that the ray command can take some time (up to several minutes, depending on image complexity, size, and computer power). \
+**Ray Use:**\
 ```
 ray [width,height [,renderer [,angle [,shift ]]]
 ```
@@ -149,7 +149,7 @@ bg_color white
 orient
 util.cbc
 remove ! polymer
-ray ray 1024,1024.  # ray trace the current scene, but scaled to 1024x1024 pixels
+ray 1024,1024.  # ray trace the current scene, but scaled to 1024x1024 pixels
 
 ```
 Then render using Draw/ray Options or command ```ray```. When you have got somehting large and have various light points, rendering can be time taking. Rendering speed can be controlled using by setting ```hash_max```. Check current hash_max using:
@@ -158,7 +158,7 @@ get hash_max
 ray
 set hash_max, 200
 ```
-You can set a heigher hash_max rate and get better performance. Heigher hash_max uses more memory for image processing (make sure you don’t crash it!).
+You can set a heigher hash_max rate and get better performance. Heigher hash_max uses more memory for image processing (make sure you don’t crash PyMOL!).
 
 ```hash_max set to 100``` : 11 gb, Ray: render time: 9.69 sec. = 371.4 frames/hour (61.48 sec. accum.).\
 ```hash_max set to 200``` : 12 bg, Ray: render time: 4.36 sec. = 825.3 frames/hour (65.84 sec. accum.).\
