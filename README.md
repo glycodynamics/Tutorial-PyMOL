@@ -19,15 +19,18 @@ PyMOL is free for teachers/and students, and educational use only license can be
 5. Using commands: keyword ```fetch 1qoh, type=pdb1``` will open biological assembly  
 
 ## 2.3 Modes
-There are two modes in PyMOL: (1) Viewing and (2) Editing. You can switch between these modes by clicking next to "Mouse Mode" on the bottom right corner panel.\
-Viewing Mode: Primarily used to view, rotate, translate, and change the representations of objects.\
-Editing Mode: Used to rotate bonds, replace atoms, physically move atoms and residues, etc.\
+There are two modes in PyMOL: (1) Viewing and (2) Editing. You can switch between these modes by clicking next to "Mouse Mode" on the bottom right corner panel.
+Viewing Mode: Primarily used to view, rotate, translate, and change the representations of objects.
+Editing Mode: Used to rotate bonds, replace atoms, physically move atoms and residues, etc.
 
 ![Figure: PyMOL Modes](https://github.com/glycodynamics/pymol/blob/main/images/Image_modes.png)
 
-• Bottom line has 'drag window option', 'States control', 'sequence view', 'rock camera' and 'full screen' options.\
-• Download PDB 7LOI ```fetch 7LOI`` and play all 15 models.\
-• Change "Mouse Mode: Editing" and "Selecting " Atoms" and then try selecting 2, 3, and 4 atoms.\
+• Bottom line has 'drag window option', 'States control', 'sequence view', 'rock camera', and 'full screen' options.
+
+• Download PDB 7LOI ```fetch 7LOI`` and play all 15 models.
+
+• Change "Mouse Mode: Editing" and "Selecting " Atoms" and then try selecting 2, 3, and 4 atoms.
+
 
 ## 2.3 Mouse control
 Things are much easier with a three-button mouse rather than a magic mouse or using a laptop's touchpad.
@@ -51,9 +54,9 @@ R-click	: Open menu
 ```
 
 ## 2.4 Aligning Structures
-PyMOL can align one structure on another and all the structures in the name list panel on another.\
-Action  →  Align  → to molecule\
-Command-line allows some more useful options to perform the alignment. Try:
+PyMOL can align one structure on another and all the structures in the name list panel on another.
+Action  →  Align  → to molecule
+The command line allows some more useful options to perform the alignment. Try:
 ```
 fetch 1qoh, type=pdb1
 fetch 2chb
@@ -67,12 +70,12 @@ super 1qoh, 2chb
 ![Alignment in PyMOL](https://github.com/glycodynamics/pymol/blob/main/images/Image_align.png)
 
 ## 2.5 Selection
-• Selectin can be made by changing "Selecting" option and then clicking on the particular unit.\
-• You can display protein sequences and select particular residues from the chain\
+• Selection can be made by changing the "Selecting" option and then clicking on the particular unit.\
+• You can display protein sequences and select particular residues or the chain\
 • PyMOL also has a selection language that can be used with ```sel``` to select atoms based on identifiers and properties. Many commands (like color, show, etc.) take an atom selection argument to only operate on a subset of all atoms in the scene. 
 Example:
 ```
-show spheres, solvent, and chain A
+show spheres, solvent and chain A
 
 ```
 ### Selection Operator/Modifier Table
@@ -81,7 +84,7 @@ show spheres, solvent, and chain A
 |**Generic**| | |
 | all|*| All atoms currently loaded into PyMOL|
 | none| | Empty selection|
-| model 1ubq|m.	1qoh| Alll the atoms from object "1qoh"|
+| model 1ubq|m.	1qoh| All the atoms from object "1qoh"|
 | chain C|c.	C| Chain identifier "C"| 
 | resn ALA|r.	ALA| Residue name "ALA"|
 |resi 100-200	|i.	|Residue identifier between 100 and 200|
@@ -99,10 +102,10 @@ show spheres, solvent, and chain A
 |metals|	|	Metal atoms (new in PyMOL 1.6.1)|
 |donors|	don.|	Hydrogen bond donor atoms|
 |acceptors|	acc.|	Hydrogen bond acceptor atoms|
-|label "Hello World"|		|Atoms with label "Hello World" (new in PyMOL 1.9)|
+|label "Hello World"|		|Atoms with the label "Hello World" (new in PyMOL 1.9)|
 
 ## Centers
-Center of mass: Select a number of atoms you wiss to include in center of mass calculation.
+Center of mass: Select atoms you want to include in the center of mass calculation.
 ```
 centerofmass sele
 ```
@@ -118,7 +121,7 @@ fetch 1qoh, type=pdb1
 bg_color white
 
 ```
-#### By using color option:
+#### By using the color option:
 • By element: Six sets with each having 8-9 color schemes.\
 • By Chain: Each chain will be colored by a different "element" scheme.\
 • By ss: "helix (red/cyan)" "loop (yellow/purple/red" and "sheet (green/pink/purple)".\
@@ -136,7 +139,7 @@ High-resolution photos fit for publication can be prepared by rendering images u
 ray [width,height [,renderer [,angle [,shift ]]]
 ```
 width and height can be set to any non-negative integer\
-If both are set to zero than the current window size is used and is equivalent to just using ray with no arguments.\
+If both are set to zero then the current window size is used and is equivalent to just using ray with no arguments.\
 If one is set to zero (or missing) while the other is a positive integer, then the argument set to zero (or missing) will be scaled to preserve the current aspect ratio.\
 
 Let us prepare a system for rendering using the following commands:
@@ -152,13 +155,13 @@ remove ! polymer
 ray 1024,1024.  # ray trace the current scene, but scaled to 1024x1024 pixels
 
 ```
-Then render using Draw/ray Options or command ```ray```. When you have got somehting large and have various light points, rendering can be time taking. Rendering speed can be controlled using by setting ```hash_max```. Check current hash_max using:
+Then render using Draw/ray Options or command ```ray```. When you have a large system with various light points, rendering can be time-consuming. Rendering speed can be controlled using by setting ```hash_max```. Check current hash_max using:
 ```
 get hash_max
 ray
 set hash_max, 200
 ```
-You can set a heigher hash_max rate and get better performance. Heigher hash_max uses more memory for image processing (make sure you don’t crash PyMOL!).
+You can set a higher hash_max rate and get better performance. Higher hash_max uses more memory for image processing (make sure you don’t crash PyMOL!).
 
 ```hash_max set to 100``` : 11 gb, Ray: render time: 9.69 sec. = 371.4 frames/hour (61.48 sec. accum.).\
 ```hash_max set to 200``` : 12 bg, Ray: render time: 4.36 sec. = 825.3 frames/hour (65.84 sec. accum.).\
@@ -166,17 +169,17 @@ You can set a heigher hash_max rate and get better performance. Heigher hash_max
 ```hash_max set to 800``` : 18 bg, Ray: render time: 9.95 sec. = 361.8 frames/hour (104.13 sec. accum.)
 
 **Save Image**
-Image can be saveed using ```save``` option after ```ray``
+Image can be saved using ```save``` option after ```ray``
 ```
 save pymol_image.png
 ```
 
-Ray and save can be combined togther and ```png``` can be used to write images as below:
+Ray and save can be combined together and ```png``` can be used to write images as below:
 ```
 png filename[, width[, height[, dpi[, ray[, quiet]]]]]
 ```
 • ```filename``` = string: file path to be written\
-• ```width``` = integer or string: width in pixels (integer or string without units), inches (in), or centimeters (cm). If unit suffix is given, `dpi` argument is required as well. If only one of `width` or `height` is given, the aspect ratio of the viewport is preserved. {default: 0 (current)}\
+• ```width``` = integer or string: width in pixels (integer or string without units), inches (in), or centimeters (cm). If the unit suffix is given, `dpi` argument is required as well. If only one of `width` or `height` is given, the aspect ratio of the viewport is preserved. {default: 0 (current)}\
 • ```height``` = integer or string: height (see width) {default: 0 (current)}\
 • ```dpi``` = float: dots-per-inch {default -1.0 (unspecified)}\
 • ```ray``` = 0 or 1: should ray be run first {default: 0 (no)}
@@ -186,7 +189,7 @@ try:
 png ~/Desktop/pymol_image.png width=10cm, dpi=300, ray=1
 png ~/Desktop/pymol_image.png width=1200, height=1200, dpi=300, ray=1
 ```
-Later will ouput a four-inch square image at 300dpi. Leaving off the dpi parameter would yield a 1200x1200 image at your system's default pixel density (e.g. 72 or 96 dpi). This saves the intermediate step of having to use GIMP/PhotoShop/etc to rescale your photos for publication.
+Later will output a four-inch square image at 300dpi. Leaving off the dpi parameter would yield a 1200x1200 image at your system's default pixel density (e.g. 72 or 96 dpi). This saves the intermediate step of having to use GIMP/PhotoShop/etc to rescale your photos for publication.
 
 ## 2.8 Image Options
 ```
@@ -226,7 +229,7 @@ remove ! polymer
 set ray_trace_mode, 1   # line thickness independent of magnification
 ```
 ```
-ray 			              # this is nice when zoomed in, but thick lines at low mag
+ray 			              # This is nice when zoomed in, but thick lines at low magnification
 ray 2400, 2400		      # line thickness is dependent on resolution
 ```
 ![Ray Trace Modes](https://github.com/glycodynamics/pymol/blob/main/images/image_ray_trace.png)
@@ -256,7 +259,7 @@ cartoon oval
 cartoon tube
 cartoon loop
 cartoon automatic
-cartoon putty.   # style the cartoon form
+cartoon putty   # Cartoon form style
 ```
 ![Cartoon representation](https://github.com/glycodynamics/pymol/blob/main/images/image_cartoon.png)
 
@@ -264,7 +267,7 @@ cartoon putty.   # style the cartoon form
 
 ```
 as cartoon
-set cartoon_fancy_helices=1
+set cartoon_fancy_helices = 1
 set cartoon_flat_sheets = 0
 set cartoon_smooth_loops = 1
 ```
@@ -272,8 +275,8 @@ set cartoon_smooth_loops = 1
 ![Cartoon Fancy](https://github.com/glycodynamics/pymol/blob/main/images/image_cartoon_types.png)
 
 
-### 2.9.4 Secordry structure determination:
-Please note that pymol's internal validation of secondary structure may not always be correct. If you notice any such mistake, you can always set the secondary structure yourself in PyMOL:
+### 2.9.4 Secondary structure determination:
+Please note that pymol's internal validation of the secondary structure may not always be correct. If you notice any such mistake, you can always set the secondary structure yourself in PyMOL:
 
 ```
 rein
@@ -282,13 +285,13 @@ bg_color white
 orient
 util.cbc
 remove ! polymer
-select c. C & i. 85-109       #just to see where is this selection
+select c. C & i. 85-109       #just to see what are we selecting selection
 alter c. C & i. 85-109, ss='L'
 as cartoon
 ```
 ![Sec Str](https://github.com/glycodynamics/pymol/blob/main/images/image_set_secondry_str.png)
 
-Color of different secondary structure types  can be set to make figure more appealing: 
+Color of different secondary structure types  can be set to make the figure more appealing: 
 ```
 as cartoon
 color red, ss h
@@ -300,7 +303,7 @@ set cartoon_flat_sheets = 0
 ![Cartoon Color](https://github.com/glycodynamics/pymol/blob/main/images/image_color_options.png)
 
 ### 2.9.5 Surface
-The surface of the protein can be shows from GUI (S->surface) as well as with a few commands:
+The surface of the protein can be shown from GUI (S->surface) as well as with a few commands:
 ```
 reinitialize
 fetch 1nqu, async=0
@@ -314,7 +317,7 @@ as surface
 ```
 
 **Surface Quality**
-This controls how well PyMOL draws surfaces. Lower values, like 0, are rough surface approximations. These low values are good for speed--especially for larger surfaces. For rendering of publication quality photos, and truer representations of the biological surface, set the value higher--to something like 2, 3 or 4. In practice typical values are 1, 2 and 3.
+This controls how well PyMOL draws surfaces. Lower values, like 0, are rough surface approximations. These low values are good for speed--especially for larger surfaces. For rendering of publication-quality photos, and truer representations of the biological surface, set the value higher--to something like 2, 3, or 4. In practice, typical values are 1, 2, and 3.
 ```
 get surface_quality
 set surface_quality, 2
@@ -323,7 +326,7 @@ ray
 ![Surf Quality](https://github.com/glycodynamics/pymol/blob/main/images/image_surf_quality.png)
 
 **Specular Reflection**
-This setting changes how PyMol handles specular reflections. Essentially, this setting, when combined with spec_power adjusts how sharp or diffuse the reflection is, giving you shiny looking surface or duller surfaces.
+This setting changes how PyMol handles specular reflections. Essentially, this setting, when combined with spec_power adjusts how sharp or diffuse the reflection is, giving you shiny-looking surfaces or duller surfaces.
 
 ```
 get spec_refl
@@ -334,7 +337,7 @@ ray
 ```
 ![Surf Reflection](https://github.com/glycodynamics/pymol/blob/main/images/Image_surf_spec_refl.png)
 
-**Solvent Radius**:This defines the solvent radius. Changing the solvent radius in PyMOL affects how PyMOL interprets surfaces, surface area. The default solvent radius is 1.4 Angstroms.
+**Solvent Radius**:This defines the solvent radius. Changing the solvent radius in PyMOL affects how PyMOL interprets surfaces and surface area. The default solvent radius is 1.4 Angstroms.
 
 ```
 get solvent_radius
@@ -346,7 +349,7 @@ set surface_solvent = on
 
 ## 2.10 Show Specific Properties
 
-Let us Show hydrophobic cores of the protein 1nqu. 
+Let us Show the hydrophobic cores of the protein 1nqu. 
 
 ```
 reinitialize
@@ -354,8 +357,8 @@ fetch 1nqu
 orient 
 bg_color white
 set hash_max, 400
-as cartoon,all
-color gray,all
+as cartoon, all
+color gray, all
 remove solvent
 ```
 
@@ -375,7 +378,7 @@ save hydrophobes_low.png
 ```
 ![Image Hydrophobes](https://github.com/glycodynamics/pymol/blob/main/images/image_hydrophobes.png)
 
-Do follwoing only of you have a powerful computer:
+Do the following only if you have a powerful computer:
 
 ```
 set spec_power = 200
@@ -406,7 +409,7 @@ set depth_cue, 0
 set ray_shadows, 0
 set ray_trace_mode, 0
 ```
-We can clip a molecule by moding wheel or follwoing python code. This python code will give us 100% reproducebility compared to clipping by using muuse.  
+We can clip a molecule by moding the wheel or following python code. This Python code will give us 100% reproducibility compared to clipping by using mouse.  
 ```
 fraction = 0.42
 view = cmd.get_view()
@@ -434,7 +437,7 @@ cmd.clip("near", near_dist)
 cmd.clip("far", far_dist)
 as cartoon
 util.cbc
-unset opaque_background # dont miss this!
+unset opaque_background # Don't miss this!
 ray
 ```
 One can superimpose surface and cartoon representation in PowerPoint or any image editor of your choice. 
@@ -443,7 +446,7 @@ One can superimpose surface and cartoon representation in PowerPoint or any imag
 
 ## 2.12 Exploiting PyMOL to get images like other packages
 ### 2.12.1 QuteMol: 
-QuteMol visualization techniques are aimed at improving clarity and an easier understanding of the 3D shape and structure of large molecules or complex proteins. Ball and Sticks, Space-Fill, and Liquorice visualization modes are most common.
+QuteMol visualization techniques are aimed at improving clarity and an easier understanding of the 3D shape and structure of large molecules or complex proteins. Ball and Sticks, Space-Fill, and Liquorice visualization modes are the most common.
 
 See more at: http://qutemol.sourceforge.net/
 
@@ -513,11 +516,11 @@ Plugin --> Plugin Manager --> Install New Plugin
 ## APBS electrostatics calculation 
 APBS, the Adaptive Poisson-Boltzmann Solver, is a freely available macromolecular electrostatics calculation program in PyMOL. It  displays the results of the calculations as an electrostatic potential molecular surface.
 
-Plugin --> APBS Electrostastics
+Plugin --> APBS Electrostatics
 
 ## Acknowledgement:
 PyMOL wiki: https://pymolwiki.org/index.php/Main_Page 
-Dr. Ross PyMOl tutorials
+Dr. Ross PyMOl's tutorials
 This workshop is supported by an Institutional Development Award (IDeA) from the National Institute of General Medical Sciences of the US National Institutes of Health under award number P20GM130460.
 ### Author:
 ```
