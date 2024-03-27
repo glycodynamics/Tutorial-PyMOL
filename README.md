@@ -5,9 +5,9 @@ Download and install one of the following PyMOL if you do not have one :
 
 [Open source version](https://pymolwiki.org/index.php/Windows_Install) : Freely available
 
-[Incentive version](https://pymol.org/2/#download)  : License required (Individual/Student/Teacher/Site wide]
+[Incentive version](https://pymol.org/2/#download): License required (Individual/Student/Teacher/Site wide]
 
-PyMOL is free for teachers/and students, and educational use only license can be obtained by registering [here](https://pymol.org/edu) 
+PyMOL is free for teachers/and students, and an educational use only license can be obtained by registering [here](https://pymol.org/edu) 
 ## 2.1 PyMOL Graphical Interface
 ![fig-1-hSig7-complex](https://github.com/glycodynamics/pymol/blob/main/images/Screen%20Shot%202022-03-03%20at%207.40.34%20PM.png)
 
@@ -54,7 +54,7 @@ R-click	: Open menu
 ```
 
 ## 2.4 Aligning Structures
-PyMOL can align one structure on another and all the structures in the name list panel on another.
+PyMOL can align one structure onto another and all the structures in the name list panel on another.
 Action  →  Align  → to molecule
 The command line allows some more useful options to perform the alignment. Try:
 ```
@@ -230,7 +230,7 @@ set ray_trace_mode, 1   # line thickness independent of magnification
 ```
 ```
 ray 			              # This is nice when zoomed in, but thick lines at low magnification
-ray 2400, 2400		      # line thickness is dependent on resolution
+ray 2400, 2400		      # line thickness is dependent on the resolution
 ```
 ![Ray Trace Modes](https://github.com/glycodynamics/pymol/blob/main/images/image_ray_trace.png)
 
@@ -409,7 +409,7 @@ set depth_cue, 0
 set ray_shadows, 0
 set ray_trace_mode, 0
 ```
-We can clip a molecule by moding the wheel or following python code. This Python code will give us 100% reproducibility compared to clipping by using mouse.  
+We can clip a molecule by moding the wheel or following Python code. This Python code will give us 100% reproducibility compared to clipping by using a mouse.  
 ```
 fraction = 0.42
 view = cmd.get_view()
@@ -475,7 +475,7 @@ set reflect,1.5
 set ray_shadow_decay_factor, 0.1
 set ray_shadow_decay_range, 2
 ```
-Note that ray_shadow sould not be switched off on this task!
+Note that ray_shadow should not be switched off on this task!
 ![QuteMol](https://github.com/glycodynamics/pymol/blob/main/images/image_quietmol.png)
 
 
@@ -519,13 +519,15 @@ APBS, the Adaptive Poisson-Boltzmann Solver, is a freely available macromolecula
 Plugin --> APBS Electrostatics
 
 ## Acknowledgement:
-PyMOL wiki: https://pymolwiki.org/index.php/Main_Page 
-Dr. Ross PyMOl's tutorials
+[PyMOL wiki](https://pymolwiki.org/index.php/Main_Page) 
+
+[Dr. Ross PyMOL's tutorials](https://www.rosswilsonlab.org/pymol)
+
 This workshop is supported by an Institutional Development Award (IDeA) from the National Institute of General Medical Sciences of the US National Institutes of Health under award number P20GM130460.
 ### Author:
 ```
-Dr. Sushil K. Mishra, PhD
-Research Scientist | Core-Manager
+Sushil Mishra, PhD
+Research Scientist
 Computational Chemistry and Bioinformatics Research Core
 Glycoscience Centre of Research Excellence (GlyCORE) 
 The University of Mississippi, P.O. Box 1848
