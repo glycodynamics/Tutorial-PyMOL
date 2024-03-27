@@ -276,7 +276,7 @@ set cartoon_smooth_loops = 1
 
 
 ### 2.9.4 Secondary structure determination:
-Please note that pymol's internal validation of the secondary structure may not always be correct. If you notice any such mistake, you can always set the secondary structure yourself in PyMOL:
+Please note that PyMOL's internal validation of the secondary structure may not always be correct. If you notice any such mistake, you can always set the secondary structure yourself in PyMOL:
 
 ```
 rein
